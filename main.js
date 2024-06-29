@@ -12,8 +12,10 @@ app.get("/", (req, res) => {
 //routing:
 const courseRouter = require('./routers/course.router');
 const lectureRouter = require('./routers/lecture.router');
+const authRouter = require("./routers/auth");
 app.use('/course',courseRouter);
 app.use('/lecture',lectureRouter);
+app.use("/auth",authRouter);
 
 
 //error handler

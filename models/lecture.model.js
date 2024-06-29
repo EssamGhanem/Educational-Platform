@@ -12,9 +12,9 @@ const lectureSchema = new Schema({
       type:String, 
       require: true
     },
-    courseId:{
-      type:String, 
-      require: true      
+    course:{
+      type:Schema.Types.ObjectId, 
+      ref:"Course"     
     }
 });
 

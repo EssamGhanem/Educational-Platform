@@ -1,7 +1,7 @@
 const asyncWrapper = require("../../middlewares/asyncWrapper");
 const Course = require("../../models/course.model");
-const appError = require("../../utilities/appError");
-const httpStatus = require("../../utilities/httpStatus");
+const appError = require("../../utils/appError");
+const httpStatus = require("../../utils/httpStatus");
 
 module.exports = asyncWrapper(async (req, res, next) => {
   const courseId = req.params.id;

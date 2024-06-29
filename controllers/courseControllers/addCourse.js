@@ -1,11 +1,11 @@
 const asyncWrapper = require('../../middlewares/asyncWrapper');
 const Course = require('../../models/course.model');
-const appError = require('../../utilities/appError');
+const appError = require('../../utils/appError');
 const addCourseValidation = require('../../validations/addCourseValidation');
 
 module.exports = asyncWrapper(
   async (req,res,next)=>{
-    const {error} = addCourseValidation.validate(req.body)
+    const {error} = addCourseValidation.validate(req.body);
     
     if( error ){
       const resError = appError.create("please enter all data! " , 404 , "failed");

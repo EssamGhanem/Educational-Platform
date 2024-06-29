@@ -1,8 +1,8 @@
 const asyncWrapper = require("../../middlewares/asyncWrapper");
 const Lectuer = require("../../models/lecture.model");
-const appError = require("../../utilities/appError");
+const appError = require("../../utils/appError");
 const addCourseValidation = require("../../validations/addCourseValidation");
-const httpStatus = require("../../utilities/httpStatus");
+const httpStatus = require("../../utils/httpStatus");
 
 
 

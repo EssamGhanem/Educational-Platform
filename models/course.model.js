@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { type } = require("../validations/addLectureValiation");
 const {Schema} = mongoose;
 //creating course schema
 //{title - description - price - numberOfStudents - lectuers - numOfLectures - createdBy - createdDate  }
@@ -15,24 +16,28 @@ const courseSchema = new Schema({
     type:String,
     require:true
   },
-  numOfStudents:{
-    type:Number,
-    default:0
-  },
-  numOfLectures:{
-    type:Number,
-    default:0
-  },
+  numOfStudents:[
+    {
+      type:Schema.ObjectId,
+      ref:"User"
+    },
+  ],
   createdBy:{
-    type:String,
+    type:Schema.ObjectId,
+    ref:"User"
   },
-  createdDate:{
-    type:Date,
-  }
+  lectures:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:"Lecture"
+    }
+  ]
+  
 
 
 
-});
+
+},{timestamps:true});
 
 
 const Course = mongoose.model('Course',courseSchema);
