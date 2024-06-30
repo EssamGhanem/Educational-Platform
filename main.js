@@ -13,9 +13,13 @@ app.get("/", (req, res) => {
 const courseRouter = require('./routers/course.router');
 const lectureRouter = require('./routers/lecture.router');
 const authRouter = require("./routers/auth");
+const studentRouter = require('./routers/student.router');
+const instructorRouter = require('./routers/instructor.router');
 app.use('/course',courseRouter);
 app.use('/lecture',lectureRouter);
 app.use("/auth",authRouter);
+app.use('/student',studentRouter);
+app.use('/instructor',instructorRouter);
 
 
 //error handler

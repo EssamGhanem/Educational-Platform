@@ -6,10 +6,11 @@ const deleteCourse = require("../controllers/courseControllers/deleteCourse");
 const getSingleCourse = require("../controllers/courseControllers/getSingleCourse");
 const updateCourse = require("../controllers/courseControllers/updateCourse");
 const getCourseLectures =require('../controllers/courseControllers/getCourseLectures');
+const {verifyToken,isInstructor,isStudnet} = require("../middlewares/auth");
 
 Router.route("/")
 .get(getAllCourses)
-.post(addCourse);
+.post( verifyToken,isInstructor,addCourse);
 
 Router.route("/:id")
 .delete(deleteCourse)

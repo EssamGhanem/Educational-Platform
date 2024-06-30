@@ -3,13 +3,15 @@ const registerValidation = require("../../validations/registerValidation");
 const User = require("../../models/user.model");
 const generateJWT = require("../../utils/generateJWT");
 const httpStatus = require("../../utils/httpStatus");
-const asyncWrapper = require("../../middlewares/asyncWrapper")
+const asyncWrapper = require("../../middlewares/asyncWrapper");
+const appError = require("../../utils/appError");
 
 const register = asyncWrapper(async (req, res, next) => {
   var { userName, email, password, role } = req.body;
   //check req body
   const { error } = registerValidation.validate(req.body);
   if (error) {
+    
     const resError = appError.create("please enter all data! ", 404, "failed");
     return next(resError);
   }

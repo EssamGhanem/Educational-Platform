@@ -19,8 +19,8 @@ const login = asyncWrapper(async(req,res,next)=>{
   }
   const  {email , password } = req.body;
   
+// check if user aready exit
   const user = await User.findOne({email:email});
-  
   if(!user)
     {
       const resError = appError.create("can not find a the user with this email", 402,  httpStatus.FAILD);
@@ -35,7 +35,7 @@ const login = asyncWrapper(async(req,res,next)=>{
       return next(resError);
     }
 
-    const userToken = await generateJWT({userName:user.userName, email:user.email, role: user.role });
+    const userToken = await generateJWT({userId:user._id, userName:user.userName, email:user.email, role: user.role });
     user.token = userToken;
     await user.save();
     res.status(201).json({status:httpStatus.SUCCESS , message : " user Logged  in successfully ...!", data:{token:user.token}});
